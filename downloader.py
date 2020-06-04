@@ -1,4 +1,5 @@
 import os
+import re
 
 import requests
 from bs4 import BeautifulSoup
@@ -63,8 +64,7 @@ def get_tasks(year):
 def download_by_year(year):
     tasks = get_tasks(year)
     for year, task_name, url in tasks:
-        task_dir = f'{task_name}'
-        task_dir = task_dir.replace('/', '_')
+        task_dir = task_name.replace('/', '_')
         mkdir(task_dir)
         download_pdfs(year, url, task_dir)
 
