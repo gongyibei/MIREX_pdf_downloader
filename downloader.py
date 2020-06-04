@@ -62,9 +62,11 @@ def get_tasks(year):
 
 
 def download_by_year(year):
+    mkdir('pdf')
     tasks = get_tasks(year)
     for year, task_name, url in tasks:
         task_dir = task_name.replace('/', '_')
+        task_dir = f'pdf/{task_dir}' 
         mkdir(task_dir)
         download_pdfs(year, url, task_dir)
 
